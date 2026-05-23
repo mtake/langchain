@@ -58,6 +58,7 @@ def format_document(doc: Document) -> str:
     content = doc.page_content
     metadata = doc.metadata
     formatted_doc = template.format(content=content, metadata=metadata)
+    # formatted_doc = json.dumps({"content": content, **metadata}, ensure_ascii=False)
     # print(formatted_doc)
     return formatted_doc
 
