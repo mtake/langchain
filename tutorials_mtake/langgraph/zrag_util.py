@@ -47,3 +47,20 @@ def convert_json_to_dict(query_file: str) -> dict[str, list[Document]]:
                 lc_documents.append(lc_document)
             query_dict[query] = lc_documents
     return query_dict
+
+
+#
+# Experimental
+#
+template = "[Rank {metadata[rank]}] Title: {metadata[title]}\nURL: {metadata[url]}\nScore: {metadata[score]}\nContent: {content}"
+
+def format_document(doc: Document) -> str:
+    content = doc.page_content
+    metadata = doc.metadata
+    formatted_doc = template.format(content=content, metadata=metadata)
+    # print(formatted_doc)
+    return formatted_doc
+
+
+def format_documents(docs: list[Document]) -> str:
+    return "\n\n".join(map(format_document, docs))
