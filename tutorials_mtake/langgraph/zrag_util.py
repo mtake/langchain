@@ -19,7 +19,7 @@ class ZRAGRetriever(BaseRetriever):
     def add_dict(self, documents_dict: dict[str, list[Document]], **kwargs: Any):
         self._documents_dict.update(documents_dict)
 
-    def add_documents(self, query: str, documents: list[Document], **kwargs: Any):
+    def add_query(self, query: str, documents: list[Document], **kwargs: Any):
         self._documents_dict[query] = documents
 
     @override
